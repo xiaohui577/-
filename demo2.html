@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+       h1{
+            text-align: center;
+            font-size: 40px;
+        }
+        p{
+            font-size: 25px;
+        }
+        input{
+            color: rgb(221, 111, 111);
+            font-size: 25px;
+            font-weight: 600;
+            border-color: rgb(42, 42, 42);
+        }
+        #weisi_iput{
+            margin-top: 20px;
+        }
+        button{
+            font-size: 30px;
+            margin-left: 5px;
+            
+        }
+        a {
+            font-size: 40px  !important;
+            color: rgb(4, 55, 114);
+            text-decoration: none; 
+         }
+         #adiv2{
+            margin-top: 20px;
+            margin-bottom: 20px;
+         }
+         #clear{
+            font-size: 25px;
+            width: 310px;
+            height: 80px;
+            position: relative;
+            top: 30px;
+            left: 0px;
+        }
+        #canshu{
+            /* width: 300px; */
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>墙铁类型</h1>
+
+    <input type="number" name="age" id="jingsi_iput" placeholder="请输入径丝长度" style=width:200px;height:80px;>
+    <button id="jingsi_btn" style=width:100px;height:80px>确定</button>
+    <input type="number" name="age" id="weisi_iput" placeholder="请输入纬丝长度" style=width:200px;height:80px>
+    <button id="weisi_btn" style=width:100px;height:80px>确定</button>
+    <button id="clear" >删除径纬值</button>
+    <div id="canshu">
+        <p id="displayValue1">网格尺寸:</p>
+        <p id="displayValue2">网格数量:</p>
+        <p id="displayValue5">回钩次数:</p>
+        <p id="displayValue6">径丝定位基准距离:1910mm</p>
+        <p id="displayValue7">径丝毛边长度:100mm</p>
+        <p id="displayValue8">拉多少网格挡板升起:</p>
+        <p id="displayValue4">开料纬丝条数:</p>
+        <p id="displayValue3">开料径丝条数:</p>
+    </div>
+    
+    <div id="adiv1">
+        <a href="./demo3tianhuaban.html" id="aa">跳转到天花板页面</a>
+    </div>
+    <div id="adiv2">
+        <a href="./demo6.html" id="aaa">跳转到主页面</a>
+    </div>
+    
+    <script>
+
+
+            
+        document.getElementById('jingsi_btn').addEventListener('click', function() {
+        //确定后按钮变色，确保下面数据进行了运算
+        //如果输入框为空，提示输入数字
+        //重新获取输入框的值
+        var jingsi_btn = document.getElementById("jingsi_btn");
+        
+        var jingsi_inputValue = document.getElementById('jingsi_iput').value;
+        if(jingsi_inputValue==""){
+           
+           alert("请输入径丝长度再点击确认按钮")
+       }
+       else{
+        jingsi_btn.style.backgroundColor = "red";
+        jingsi_btn.style.color = "white";
+
+          /*计算网格尺寸和数量*/
+        //var jingsi = prompt("请输入径丝长度")
+        //变量jingsi_long为径丝实际焊接长度
+       
+        var jingsi_long = jingsi_inputValue-600
+        var jingsi_180 = jingsi_long/180
+        var wangge_num = Math.trunc(jingsi_180)
+        var wanggeshicun = jingsi_long/wangge_num
+        //使用字符串和正则表达式将网格尺寸保留一位小数
+        wanggeshicun=wanggeshicun.toString().match(/^-?\d+(?:\.\d{0,1})?/)[0]; // 182.3454565将会等于"182.3"
+        var huigouzi = 0;
+        console.log("网格尺寸为:"+wanggeshicun)
+        console.log("网格数量为:"+wangge_num)
+        document.getElementById('displayValue1').innerText = "网格尺寸："+wanggeshicun+"mm"
+        var wanggeshi_tiaoshu = wangge_num + 1
+        document.getElementById('displayValue4').innerText = "开料纬丝条数:"+ wanggeshi_tiaoshu
+        document.getElementById('displayValue2').innerText ="网格数量:"+ wangge_num
+        document.getElementById('displayValue8').innerText ="拉多少网格挡板升起:"+(wangge_num-5);
+        
+       window.aa=wanggeshicun
+
+       //计算回钩次数
+        if(wangge_num % 10 == 0){
+            huigouzi = (wangge_num/10) - 1
+            document.getElementById('displayValue5').innerText ="回钩次数:"+huigouzi;
+         }
+         else{
+            huigouzi = Math.trunc((wangge_num/10))
+            document.getElementById('displayValue5').innerText ="回钩次数:"+huigouzi;
+          
+        }
+        //点击确定按钮进行运算，禁用按钮与输入框，防止误改
+            document.getElementById('jingsi_iput').disabled = true
+            document.getElementById('jingsi_btn').disabled = true
+       }
+        
+       
+        });
+
+        var weisi_btn = document.getElementById("weisi_btn");
+        var weisi_inputValue = document.getElementById('weisi_iput').value;
+
+       
+        document.getElementById('weisi_btn').addEventListener('click', function() {
+
+        //确定后按钮变色,确保下面数据进行了运算
+        //如果输入框为空，提示输入数字
+        //重新获取输入框的值
+        weisi_inputValue = document.getElementById('weisi_iput').value;
+        if(weisi_inputValue==""){
+           
+            alert("请输入纬丝长度再点击确认按钮")
+        }
+        else{
+            weisi_btn.style.backgroundColor = "red";
+            weisi_btn.style.color = "white";
+
+        /*计算开料径丝条数*/
+
+         //重新计算网格尺寸
+
+        function getSecondDecimalPlace(num) {
+        // 将数字转换为字符串
+        var numStr = num.toString();
+        // 分割整数部分和小数部分
+        var parts = numStr.split('.');
+        // 检查是否存在小数部分
+        if (parts.length === 2) {
+            // 获取小数点后的第一位数字
+            var secondDecimalPlace = parts[1].charAt(0);
+            // 将字符转换为数字返回
+            return parseInt(secondDecimalPlace, 10);
+        }
+        // 如果没有小数部分，返回undefined
+        return undefined;
+        }
+        
+         var weisi_long=weisi_inputValue-250
+         var xiaoshu = weisi_long/180.5
+         var jingsi_tiaoshu = 0
+         if(getSecondDecimalPlace(xiaoshu)>=1 && getSecondDecimalPlace(xiaoshu)<=2){
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 1
+            console.log(xiaoshu+"--------------1-2")
+            
+         }
+         else if(getSecondDecimalPlace(xiaoshu)>=3 && getSecondDecimalPlace(xiaoshu)<=9){
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 2
+            console.log(xiaoshu+"--------------3-9")
+         }
+         else{
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 1
+            console.log(xiaoshu+"整除了")
+          
+        }
+        
+         document.getElementById('displayValue3').innerText ="开料径丝条数:"+ jingsi_tiaoshu
+        //点击确定按钮进行运算，禁用按钮与输入框，防止误改
+         document.getElementById('weisi_iput').disabled = true
+         document.getElementById('weisi_btn').disabled = true
+
+        }
+        
+        });
+
+        //监听径丝输入框的值，为空时按钮恢复原色
+        //input事件来监听文本框的值的变化。这个事件在输入框的值发生变化时触发。
+
+        document.getElementById('jingsi_iput').addEventListener('input', function(event) {
+            console.log('Input value changed to: ' + event.target.value);
+            if(event.target.value==""){
+                var jingsi_iput = document.getElementById("jingsi_iput");
+                jingsi_btn.style.backgroundColor = "#e5e5e5";
+                jingsi_btn.style.color = "black";
+            }
+    });
+
+        //监听纬丝输入框的值，为空时按钮恢复原色
+        //input事件来监听文本框的值的变化。这个事件在输入框的值发生变化时触发。
+
+        document.getElementById('weisi_iput').addEventListener('input', function(event) {
+            console.log('Input value changed to: ' + event.target.value);
+            if(event.target.value==""){
+                var weisi_btn = document.getElementById("weisi_btn");
+                weisi_btn.style.backgroundColor = "#e5e5e5";
+                weisi_btn.style.color = "black";
+
+            }
+    });
+
+        
+
+        
+
+            //删除径纬值按钮事件
+            document.getElementById('clear').addEventListener('click', function() {
+                //1、清空径纬输入框的值,调用clear_input_btn()方法实现
+                //2.解除禁用
+            clear_input_btn()
+            document.getElementById('jingsi_iput').disabled = false
+            document.getElementById('jingsi_btn').disabled = false
+            document.getElementById('weisi_iput').disabled = false
+            document.getElementById('weisi_btn').disabled = false
+            //3.清空后刷新页面，清空数据
+            //以下进行数据清空运算，刷新页面
+            location.reload();
+           
+            });
+
+            //写一个方法，径纬输入框清空值，且按钮恢复未确定状态
+            function clear_input_btn() {
+                document.getElementById('jingsi_iput').value = "";
+                var jingsi_btn = document.getElementById("jingsi_btn");
+                jingsi_btn.style.backgroundColor = "#e5e5e5";
+                jingsi_btn.style.color = "black";
+                document.getElementById('weisi_iput').value = "";
+                var weisi_btn = document.getElementById("weisi_btn");
+                weisi_btn.style.backgroundColor = "#e5e5e5";
+                weisi_btn.style.color = "black";
+                
+                }
+
+
+        
+        
+    </script>
+</body>
+</html>

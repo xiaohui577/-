@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mySelect{
+            width: 330px;
+            height: 80px;
+            font-size: 35px;
+            color: red;
+            /* border: 1px solid red; */
+        }
+        input{
+            color: rgb(221, 111, 111);
+            font-size: 25px;
+            font-weight: 600;
+            border-color: rgb(42, 42, 42);
+            width: 200px;
+            height: 80px;
+            margin-top: 20px;
+        }
+        button{
+            font-size: 25px;
+            width: 100px;
+            height: 80px;
+            position: relative;
+            top: 15px;
+            left: 15px;
+            
+        }
+        h1{
+            text-align: center;
+            font-size: 40px;
+            color: rgb(235, 69, 69);
+        }
+        
+        h2{
+            text-align: center;
+            font-size: 40px;
+            color: rgb(47, 47, 47);
+        }
+        h3{
+            text-align: center;
+            font-size: 30px;
+            color: rgb(47, 47, 47);
+        }
+        p{
+            font-size: 25px;
+        }
+
+        .tianhuaban_kailiao {
+            width: 340px;height: 340px;
+            border: 1px solid red;
+        }
+        .changqiangtie_kailiao{
+            width: 340px;height: 340px;
+            border: 1px solid red;
+        }
+        .duanqiangtie_kailiao{
+            width: 340px;height: 340px;
+            border: 1px solid red;
+        }
+        #clear{
+            font-size: 25px;
+            width: 325px;
+            height: 80px;
+            position: relative;
+            left: 1px;
+            top: 40px;
+        }
+        a {
+            font-size: 40px  !important;
+            color: rgb(4, 55, 114);
+            text-decoration: none; 
+         }
+         #adiv1{
+            margin-top: 30px;
+         }
+         #adiv2{
+            margin-top: 20px;
+            margin-bottom: 20px;
+         }
+         #canshu{
+            /* width: 300px; */
+            margin-top: 90px;
+        }
+        #zhipiaotai_iput{
+            position: relative;
+            top: 31px;
+        }
+        #cepiaotai_iput{
+            position: relative;
+            top: 31px;
+        }
+    </style>
+</head>
+<body>
+    <h2>焊机参数与开料</h2>
+    <select id="mySelect">
+        <option value="option0 请选择房子规格" selected>请选择房子规格</option>
+        <option value="option1 3.3 x 3.3 高3米">3.3 x 3.3 高3米</option>
+        <option value="option2 3.3 x 3.3 高3.2米">3.3 x 3.3 高3.2米</option>
+        <option value="option3 3.3 x 6.6 高3米">3.3 x 6.6 高3米</option>
+        <option value="option4 3.3 x 6.6 高3.2米">3.3 x 6.6 高3.2米</option>
+        <option value="option5 3.6 x 7.2 高3米">3.6 x 7.2 高3米</option>
+        <option value="option6 3.6 x 7.2 高3.5米">3.6 x 7.2 高3.5米</option>
+        <option value="option7 3.6 x 7.2 高3.8米">3.6 x 7.2 高3.8米</option>
+        <option value="option8 4 x 6 高3米">4 x 6 高3米</option>
+        <option value="option9 4 x 6 高3.5米">4 x 6 高3.5米</option>
+        <option value="option10 4 x 8 高3米">4 x 8 高3米</option>
+        <option value="option11 4 x 8 高3.5米">4 x 8 高3.5米</option>
+        <option value="option12 4 x 8 高3.8米">4 x 8 高3.8米</option>
+      </select>
+      <input type="number" name="age" id="zhipiaotai_iput" placeholder="直飘台加多少公分" >
+      <button id="zhipiaotai_btn">直飘台确定</button>
+      <input type="number" name="age" id="cepiaotai_iput" placeholder="侧飘台加多少公分">
+      <button id="cepiaotai_btn" >侧飘台确定</button>
+      <button id="clear" >删除直侧飘台值</button>
+
+    <div id="canshu">
+        <h1>天花板类型</h1>
+    <p id="displayValue1">网格尺寸:</p>
+    <p id="displayValue2">网格数量:</p>
+    <p id="displayValue5">回钩次数:</p>
+    <p id="displayValue6">径丝定位基准距离:1700mm</p>
+    <p id="displayValue7">径丝毛边长度:50mm</p>
+    <p id="displayValue8">拉多少网格挡板升起:</p>
+    <div class="tianhuaban_kailiao">
+        <h3>天花板开料区域</h3>
+        <p id="displayValue44">开料纬丝值:</p>
+        <p id="displayValue4">开料纬丝条数:</p>
+        <p id="displayValue33">开料径丝值:</p>
+        <p id="displayValue3">开料径丝条数:</p>
+    </div>
+   
+
+
+
+    <!-- <p>-------------------------------</p> -->
+    <h1>长墙铁类型</h1>
+    <p id="displayValue9">网格尺寸:</p>
+    <p id="displayValue10">网格数量:</p>
+    <p id="displayValue11">回钩次数:</p>
+    <p id="displayValue12">径丝定位基准距离:1910mm</p>
+    <p id="displayValue13">径丝毛边长度:100mm</p>
+    <p id="displayValue14">拉多少网格挡板升起:</p>
+    <div class="changqiangtie_kailiao">
+        <h3>长墙铁开料区域</h5>
+        <p id="displayValue155">开料纬丝值:</p>
+        <p id="displayValue15">开料纬丝条数:</p>
+        <p id="displayValue166">开料径丝值:</p>
+        <p id="displayValue16">开料径丝条数:</p>
+    </div>
+    
+    <!-- <p>-------------------------------</p> -->
+    <h1>短墙铁类型</h1>
+    <p id="displayValue17">网格尺寸:</p>
+    <p id="displayValue18">网格数量:</p>
+    <p id="displayValue19">回钩次数:</p>
+    <p id="displayValue20">径丝定位基准距离:1910mm</p>
+    <p id="displayValue21">径丝毛边长度:100mm</p>
+    <p id="displayValue22">拉多少网格挡板升起:</p>
+    <div class="duanqiangtie_kailiao">
+        <h3>短墙铁开料区域</h5>
+        <p id="displayValue233">开料纬丝值:</p>
+        <p id="displayValue23">开料纬丝条数:</p>
+        <p id="displayValue244">开料径丝值:</p>
+        <p id="displayValue24">开料径丝条数:</p>
+    </div>
+    <div id="adiv1">
+        <a href="./demo3tianhuaban.html" id="aa">跳转到天花板页面</a>
+    </div>
+    <div id="adiv2">
+        <a href="./demo2.html" id="aaa">跳转到墙铁页面</a>
+    </div>
+    </div>
+    
+      <script>
+        /*
+            通过监听select元素的change事件来实现当下拉框选项变更时触发的事件
+            每当用户选择一个不同的房子规格选项时，change事件就会被触发，然后执行回调函数中的代码。
+        */
+        //定义房子长、宽、高变量
+        var house_long = 0
+        var house_wide = 0
+        var house_height = 0
+        document.getElementById('mySelect').addEventListener('change', function() {
+        // 获取选中的值
+        var selectedValue = this.value;
+        window.selectedValue = selectedValue
+        // 执行其他逻辑
+        console.log('Selected value is: ' + selectedValue);
+        
+        //1、选中3.3 x 3.3 高3米规格
+        if(selectedValue=="option1 3.3 x 3.3 高3米"){
+           
+             house_long = 3200
+             house_wide = 3200
+             house_height = 2950
+             console.log(house_long,house_wide,house_height)
+            //以下进行(3.3 x 3.3 高3米)天花板、长墙铁、短墙铁运算
+             tianhuaban_yunsuan(house_long,house_wide,house_height)
+             long_qiangtie_yunsuan(house_long,house_wide,house_height)
+             duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+             //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+             selectoption_zhi_ce_input_btn()
+           
+        }
+        //2、选中3.3 x 3.3 高3.2米规格
+        else if(selectedValue=="option2 3.3 x 3.3 高3.2米"){
+           
+            house_long = 3200
+            house_wide = 3200
+            house_height = 3150
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行(3.3 x 3.3 高3.2米)天花板、长墙铁、短墙铁运算
+            tianhuaban_yunsuan(house_long,house_wide,house_height)
+            long_qiangtie_yunsuan(house_long,house_wide,house_height)
+            duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+             //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+            selectoption_zhi_ce_input_btn()
+       }
+       //3、选中3.3 x 6.6 高3米规格
+       else if(selectedValue=="option3 3.3 x 6.6 高3米"){
+           
+            house_long = 6500
+            house_wide = 3200
+            house_height = 2950
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行( 3.3 x 6.6 高3米)天花板、长墙铁、短墙铁运算
+            tianhuaban_yunsuan(house_long,house_wide,house_height)
+            long_qiangtie_yunsuan(house_long,house_wide,house_height)
+            duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+             //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+             selectoption_zhi_ce_input_btn()
+       }
+       //4、选中 3.3 x 6.6 高3.2米规格
+       else if(selectedValue=="option4 3.3 x 6.6 高3.2米"){
+           
+            house_long = 6500
+            house_wide = 3200
+            house_height = 3150
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行(3.3 x 6.6 高3.2米)天花板、长墙铁、短墙铁运算
+           tianhuaban_yunsuan(house_long,house_wide,house_height)
+           long_qiangtie_yunsuan(house_long,house_wide,house_height)
+           duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+            //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+            selectoption_zhi_ce_input_btn()
+       }
+       //5、选中 3.6 x 7.2 高3米规格
+       else if(selectedValue=="option5 3.6 x 7.2 高3米"){
+           
+            house_long = 7100
+            house_wide = 3500
+            house_height = 2950
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行(3.6 x 7.2 高3米)天花板、长墙铁、短墙铁运算
+           tianhuaban_yunsuan(house_long,house_wide,house_height)
+           long_qiangtie_yunsuan(house_long,house_wide,house_height)
+           duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+            //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+            selectoption_zhi_ce_input_btn()
+       }
+       //6、选中 3.6 x 7.2 高3.5米规格
+       else if(selectedValue=="option6 3.6 x 7.2 高3.5米"){
+           
+            house_long = 7100
+            house_wide = 3500
+            house_height = 3450
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行(3.6 x 7.2 高3.5米)天花板、长墙铁、短墙铁运算
+            tianhuaban_yunsuan(house_long,house_wide,house_height)
+            long_qiangtie_yunsuan(house_long,house_wide,house_height)
+            duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+             //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+             selectoption_zhi_ce_input_btn()
+       }
+
+        //7、选中 3.6 x 7.2 高3.8米规格
+        else if(selectedValue=="option7 3.6 x 7.2 高3.8米"){
+           
+           house_long = 7100
+           house_wide = 3500
+           house_height = 3750
+           console.log(house_long,house_wide,house_height)
+
+          //以下进行(3.6 x 7.2 高3.8米)天花板、长墙铁、短墙铁运算
+           tianhuaban_yunsuan(house_long,house_wide,house_height)
+           long_qiangtie_yunsuan(house_long,house_wide,house_height)
+           duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+            //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+            selectoption_zhi_ce_input_btn()
+      }
+       //8、选中 4 x 6 高3米规格
+       else if(selectedValue=="option8 4 x 6 高3米"){
+           
+            house_long = 5900
+            house_wide = 3900
+            house_height = 2950
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行(4 x 6 高3米)天花板、长墙铁、短墙铁运算
+            tianhuaban_yunsuan(house_long,house_wide,house_height)
+            long_qiangtie_yunsuan(house_long,house_wide,house_height)
+            duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+             //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+             selectoption_zhi_ce_input_btn()
+       }
+       //9、选中 4 x 6 高3.5米规格
+       else if(selectedValue=="option9 4 x 6 高3.5米"){
+           
+            house_long = 5900
+            house_wide = 3900
+            house_height = 3450
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行(4 x 6 高3.5米)天花板、长墙铁、短墙铁运算
+           tianhuaban_yunsuan(house_long,house_wide,house_height)
+           long_qiangtie_yunsuan(house_long,house_wide,house_height)
+           duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+            //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+            selectoption_zhi_ce_input_btn()
+       }
+       //10、选中 4 x 8 高3米规格
+       else if(selectedValue=="option10 4 x 8 高3米"){
+           
+            house_long = 7900
+            house_wide = 3900
+            house_height = 2950
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行(4 x 8 高3米)天花板、长墙铁、短墙铁运算
+           tianhuaban_yunsuan(house_long,house_wide,house_height)
+           long_qiangtie_yunsuan(house_long,house_wide,house_height)
+           duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+            //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+            selectoption_zhi_ce_input_btn()
+       }
+
+       //11、选中 4 x 8 高3.5米规格
+       else if(selectedValue=="option11 4 x 8 高3.5米"){
+           
+           house_long = 7900
+           house_wide = 3900
+           house_height = 3450
+           console.log(house_long,house_wide,house_height)
+
+          //以下进行(4 x 8 高3.5米)天花板、长墙铁、短墙铁运算
+          tianhuaban_yunsuan(house_long,house_wide,house_height)
+          long_qiangtie_yunsuan(house_long,house_wide,house_height)
+          duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+           //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+           selectoption_zhi_ce_input_btn()
+      }
+       //12、选中 4 x 8 高3.8米规格
+       else if(selectedValue=="option12 4 x 8 高3.8米"){
+           
+            house_long = 7900
+            house_wide = 3900
+            house_height = 3750
+            console.log(house_long,house_wide,house_height)
+
+           //以下进行(4 x 8 高3.8米)天花板、长墙铁、短墙铁运算
+           tianhuaban_yunsuan(house_long,house_wide,house_height)
+           long_qiangtie_yunsuan(house_long,house_wide,house_height)
+           duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+            //当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态
+            selectoption_zhi_ce_input_btn()
+       }
+
+        //13、选中 "请选择房子规格"，清空所有值
+        else if(selectedValue=="option0 请选择房子规格"){
+           
+           console.log("option0 请选择房子规格")
+
+          //以下进行数据清空运算，刷新页面
+          location.reload();
+      }
+});
+
+
+        //当有直飘台存在，重新计算天花板类型，算纬丝条数
+        document.getElementById('zhipiaotai_btn').addEventListener('click', function() {
+
+        //获取直飘台输入框的值
+        var zhipiaotai_inputValue = document.getElementById('zhipiaotai_iput').value;
+        //获取房子长度
+        //房子长度与飘台的值相加计算天花板类型
+        var zhipiaotai_long = Number(zhipiaotai_inputValue) + Number(house_long)
+        //当option为请输入房子规格时，点击直飘台按钮时应提示选择规格再运算直飘台
+        console.log(window.selectedValue);
+        //确定后按钮变色，确保下面数据进行了运算
+        //如果输入框为空，提示输入数字
+        //重新获取输入框的值
+        var zhipiaotai_btn = document.getElementById("zhipiaotai_btn");
+        if(zhipiaotai_inputValue==""){
+
+        alert("请输入飘台长度再点击确认按钮")
+        }
+        else if(window.selectedValue=="option0 请选择房子规格"|| window.selectedValue==undefined){
+
+            alert("请先选择房子规格再点击直飘台")
+        }
+        else{
+        zhipiaotai_btn.style.backgroundColor = "red";
+        zhipiaotai_btn.style.color = "white";
+        tianhuaban_yunsuan(zhipiaotai_long,house_wide,house_height)
+
+        //运算后进行按钮和输入框禁用，防止误改
+        this.disabled = true
+        document.getElementById('zhipiaotai_iput').disabled = true
+        }
+    });
+
+        //删除直侧飘台按钮事件
+        document.getElementById('clear').addEventListener('click', function() {
+            //1、清空直侧飘台输入框的值,调用selectoption_zhi_ce_input_btn()方法实现
+            //2.解除禁用
+           selectoption_zhi_ce_input_btn()
+           document.getElementById('zhipiaotai_iput').disabled = false
+           document.getElementById('zhipiaotai_btn').disabled = false
+           document.getElementById('cepiaotai_iput').disabled = false
+           document.getElementById('cepiaotai_btn').disabled = false
+           //3.清空后以房子规格进行运算,第一个“option0 请选择房子规格”不调用函数进行运算
+           if(document.getElementById('mySelect').value != "option0 请选择房子规格"){
+                tianhuaban_yunsuan(house_long,house_wide,house_height)
+                long_qiangtie_yunsuan(house_long,house_wide,house_height)
+                duan_qiangtie_yunsuan(house_long,house_wide,house_height)
+           }
+           
+        });
+
+        //当有侧飘台存在，重新计算天花板类型，算径丝条数
+        document.getElementById('cepiaotai_btn').addEventListener('click', function() {
+            //获取侧飘台输入框的值
+            var cepiaotai_inputValue = document.getElementById('cepiaotai_iput').value;
+            //获取房子宽度
+            //房子宽度与侧飘台的值相加计算天花板类型，算径丝条数
+            var cepiaotai_long = Number(cepiaotai_inputValue) + Number(house_wide)
+
+            //当option为请输入房子规格时，点击侧飘台按钮时应提示选择规格再运算侧飘台
+            console.log(window.selectedValue);
+            //如果房子规格宽与侧飘台的值相加大于3900,(焊机最长只能焊3900)就取3900
+            if(cepiaotai_long >= 3900){
+                cepiaotai_long = 3900
+            }
+
+            //确定后按钮变色，确保下面数据进行了运算
+            //如果输入框为空，提示输入数字
+            //重新获取输入框的值
+            var cepiaotai_btn = document.getElementById("cepiaotai_btn");
+            if(cepiaotai_inputValue==""){
+
+            alert("请输入侧飘台长度再点击确认按钮")
+            }
+            else if(window.selectedValue=="option0 请选择房子规格"|| window.selectedValue==undefined){
+
+            alert("请先选择房子规格再点击侧飘台")
+            }
+            else{
+            cepiaotai_btn.style.backgroundColor = "red";
+            cepiaotai_btn.style.color = "white";
+            //如果没有直飘，则单单运算侧飘台
+            //获取直飘台输入框的值
+            var zhipiaotai_inputValue = document.getElementById('zhipiaotai_iput').value;
+             //房子长度与飘台的值相加计算天花板类型
+            var zhipiaotai_long = Number(zhipiaotai_inputValue) + Number(house_long)
+            if(zhipiaotai_inputValue == ""){
+                tianhuaban_yunsuan(house_long,cepiaotai_long,house_height)
+            }
+            tianhuaban_yunsuan(zhipiaotai_long,cepiaotai_long,house_height)
+             //运算后进行按钮和输入框禁用，防止误改
+            this.disabled = true
+            document.getElementById('cepiaotai_iput').disabled = true
+
+            }
+
+        });
+
+         //1、写天花板运算方法,再进行调用
+         function tianhuaban_yunsuan(long,wide,height) {
+             /*计算网格尺寸和数量*/
+            var house_long = long-110
+            var house_180 = house_long/180
+            var wangge_num = Math.trunc(house_180)
+            var wanggeshicun = house_long/wangge_num
+            //使用字符串和正则表达式将网格尺寸保留一位小数
+            wanggeshicun=wanggeshicun.toString().match(/^-?\d+(?:\.\d{0,1})?/)[0]; // 182.3454565将会等于"182.3"
+            var huigouzi = 0;
+            console.log("网格尺寸为："+wanggeshicun)
+            console.log("网格数量为："+wangge_num)
+            document.getElementById('displayValue1').innerText = "网格尺寸："+wanggeshicun+"mm"
+            var wanggeshi_tiaoshu = wangge_num + 1
+            document.getElementById('displayValue44').innerText = "开料纬丝值："+ (wide/1000).toFixed(2)+"米"
+            document.getElementById('displayValue4').innerText = "开料纬丝条数："+ wanggeshi_tiaoshu
+            document.getElementById('displayValue2').innerText ="网格数量："+ wangge_num
+            document.getElementById('displayValue8').innerText ="拉多少网格挡板升起："+(wangge_num-5);
+            
+        window.aa=wanggeshicun
+
+        //计算回钩次数
+            if(wangge_num % 10 == 0){
+                huigouzi = (wangge_num/10) - 1
+                document.getElementById('displayValue5').innerText ="回钩次数："+huigouzi;
+            }
+            else{
+                huigouzi = Math.trunc((wangge_num/10))
+                document.getElementById('displayValue5').innerText ="回钩次数："+huigouzi;
+            
+            }
+
+
+        /*计算开料径丝条数*/
+
+
+        function getSecondDecimalPlace(num) {
+        // 将数字转换为字符串
+        var numStr = num.toString();
+        // 分割整数部分和小数部分
+        var parts = numStr.split('.');
+        // 检查是否存在小数部分
+        if (parts.length === 2) {
+            // 获取小数点后的第一位数字
+            var secondDecimalPlace = parts[1].charAt(0);
+            // 将字符转换为数字返回
+            return parseInt(secondDecimalPlace, 10);
+        }
+        // 如果没有小数部分，返回undefined
+        return undefined;
+        }
+        
+         var house_wide=wide-100
+         var xiaoshu = house_wide/180.5
+         var jingsi_tiaoshu = 0
+         if(getSecondDecimalPlace(xiaoshu)>=1 && getSecondDecimalPlace(xiaoshu)<=2){
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 1
+            console.log(xiaoshu+"--------------1-2")
+            
+         }
+         else if(getSecondDecimalPlace(xiaoshu)>=3 && getSecondDecimalPlace(xiaoshu)<=9){
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 2
+            console.log(xiaoshu+"--------------3-9")
+         }
+         else{
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 1
+            console.log(xiaoshu+"整除了")
+          
+        }
+         document.getElementById('displayValue33').innerText ="开料径丝值："+ (long/1000).toFixed(2)+"米"
+         document.getElementById('displayValue3').innerText ="开料径丝条数："+ jingsi_tiaoshu
+        }
+        //2、写长墙铁运算方法,再进行调用
+        function long_qiangtie_yunsuan(long,wide,height) {
+            /*计算网格尺寸和数量*/
+        
+            var jingsi_long = long-600
+            var jingsi_180 = jingsi_long/180
+            var wangge_num = Math.trunc(jingsi_180)
+            var wanggeshicun = jingsi_long/wangge_num
+            //使用字符串和正则表达式将网格尺寸保留一位小数
+            wanggeshicun=wanggeshicun.toString().match(/^-?\d+(?:\.\d{0,1})?/)[0]; // 182.3454565将会等于"182.3"
+            var huigouzi = 0;
+            console.log("网格尺寸为:"+wanggeshicun)
+            console.log("网格数量为:"+wangge_num)
+            document.getElementById('displayValue9').innerText = "网格尺寸："+wanggeshicun+"mm"
+            var wanggeshi_tiaoshu = wangge_num + 1
+            document.getElementById('displayValue155').innerText = "开料纬丝值: "+ (height/1000).toFixed(2)+"米"
+            document.getElementById('displayValue15').innerText = "开料纬丝条数: "+ wanggeshi_tiaoshu
+            document.getElementById('displayValue10').innerText ="网格数量:"+ wangge_num
+            document.getElementById('displayValue14').innerText ="拉多少网格挡板升起:"+(wangge_num-5);
+            
+        window.aa=wanggeshicun
+
+        //计算回钩次数
+            if(wangge_num % 10 == 0){
+                huigouzi = (wangge_num/10) - 1
+                document.getElementById('displayValue11').innerText ="回钩次数:"+huigouzi;
+            }
+            else{
+                huigouzi = Math.trunc((wangge_num/10))
+                document.getElementById('displayValue11').innerText ="回钩次数:"+huigouzi;
+            
+            }
+
+
+        /*计算开料径丝条数*/
+
+        function getSecondDecimalPlace(num) {
+        // 将数字转换为字符串
+        var numStr = num.toString();
+        // 分割整数部分和小数部分
+        var parts = numStr.split('.');
+        // 检查是否存在小数部分
+        if (parts.length === 2) {
+            // 获取小数点后的第一位数字
+            var secondDecimalPlace = parts[1].charAt(0);
+            // 将字符转换为数字返回
+            return parseInt(secondDecimalPlace, 10);
+        }
+        // 如果没有小数部分，返回undefined
+        return undefined;
+        }
+        
+         var weisi_long=height-250
+         var xiaoshu = weisi_long/180.5
+         var jingsi_tiaoshu = 0
+         if(getSecondDecimalPlace(xiaoshu)>=1 && getSecondDecimalPlace(xiaoshu)<=2){
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 1
+            console.log(xiaoshu+"--------------1-2")
+            
+         }
+         else if(getSecondDecimalPlace(xiaoshu)>=3 && getSecondDecimalPlace(xiaoshu)<=9){
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 2
+            console.log(xiaoshu+"--------------3-9")
+         }
+         else{
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 1
+            console.log(xiaoshu+"整除了")
+          
+        }
+         document.getElementById('displayValue166').innerText ="开料径丝值: "+ (long/1000).toFixed(2)+"米"
+         document.getElementById('displayValue16').innerText ="开料径丝条数: "+ jingsi_tiaoshu
+        }
+
+
+         //3、写短墙铁运算方法,再进行调用
+         function duan_qiangtie_yunsuan(long,wide,height) {
+             /*计算网格尺寸和数量*/
+        
+            var jingsi_long = wide-600
+            var jingsi_180 = jingsi_long/180
+            var wangge_num = Math.trunc(jingsi_180)
+            var wanggeshicun = jingsi_long/wangge_num
+            //使用字符串和正则表达式将网格尺寸保留一位小数
+            wanggeshicun=wanggeshicun.toString().match(/^-?\d+(?:\.\d{0,1})?/)[0]; // 182.3454565将会等于"182.3"
+            var huigouzi = 0;
+            console.log("网格尺寸为:"+wanggeshicun)
+            console.log("网格数量为:"+wangge_num)
+            document.getElementById('displayValue17').innerText = "网格尺寸："+wanggeshicun+"mm"
+            var wanggeshi_tiaoshu = wangge_num + 1
+            document.getElementById('displayValue233').innerText = "开料纬丝值: "+ (height/1000).toFixed(2)+"米"
+            document.getElementById('displayValue23').innerText = "开料纬丝条数: "+ wanggeshi_tiaoshu
+            document.getElementById('displayValue18').innerText ="网格数量:"+ wangge_num
+            document.getElementById('displayValue22').innerText ="拉多少网格挡板升起:"+(wangge_num-5);
+            
+        window.aa=wanggeshicun
+
+        //计算回钩次数
+            if(wangge_num % 10 == 0){
+                huigouzi = (wangge_num/10) - 1
+                document.getElementById('displayValue19').innerText ="回钩次数:"+huigouzi;
+            }
+            else{
+                huigouzi = Math.trunc((wangge_num/10))
+                document.getElementById('displayValue19').innerText ="回钩次数:"+huigouzi;
+            
+            }
+
+
+        /*计算开料径丝条数*/
+
+        function getSecondDecimalPlace(num) {
+        // 将数字转换为字符串
+        var numStr = num.toString();
+        // 分割整数部分和小数部分
+        var parts = numStr.split('.');
+        // 检查是否存在小数部分
+        if (parts.length === 2) {
+            // 获取小数点后的第一位数字
+            var secondDecimalPlace = parts[1].charAt(0);
+            // 将字符转换为数字返回
+            return parseInt(secondDecimalPlace, 10);
+        }
+        // 如果没有小数部分，返回undefined
+        return undefined;
+        }
+        
+         var weisi_long=height-250
+         var xiaoshu = weisi_long/180.5
+         var jingsi_tiaoshu = 0
+         if(getSecondDecimalPlace(xiaoshu)>=1 && getSecondDecimalPlace(xiaoshu)<=2){
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 1
+            console.log(xiaoshu+"--------------1-2")
+            
+         }
+         else if(getSecondDecimalPlace(xiaoshu)>=3 && getSecondDecimalPlace(xiaoshu)<=9){
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 2
+            console.log(xiaoshu+"--------------3-9")
+         }
+         else{
+            jingsi_tiaoshu = Math.trunc(xiaoshu) + 1
+            console.log(xiaoshu+"整除了")
+          
+        }
+         document.getElementById('displayValue244').innerText ="开料径丝值: "+ (wide/1000).toFixed(2)+"米"
+         document.getElementById('displayValue24').innerText ="开料径丝条数: "+ jingsi_tiaoshu
+        }
+
+
+
+        //监听直飘台输入框的值，为空时按钮恢复原色
+        //input事件来监听文本框的值的变化。这个事件在输入框的值发生变化时触发。
+
+        document.getElementById('zhipiaotai_iput').addEventListener('input', function(event) {
+            console.log('Input value changed to: ' + event.target.value);
+            if(event.target.value==""){
+                var zhipiaotai_btn = document.getElementById("zhipiaotai_btn");
+                zhipiaotai_btn.style.backgroundColor = "#e5e5e5";
+                zhipiaotai_btn.style.color = "black";
+
+            }
+
+            
+    });
+
+     //监听侧飘台输入框的值，为空时按钮恢复原色
+        //input事件来监听文本框的值的变化。这个事件在输入框的值发生变化时触发。
+
+        document.getElementById('cepiaotai_iput').addEventListener('input', function(event) {
+
+            console.log('Input value changed to: ' + event.target.value);
+            if(event.target.value==""){
+                var cepiaotai_btn = document.getElementById("cepiaotai_btn");
+                cepiaotai_btn.style.backgroundColor = "#e5e5e5";
+                cepiaotai_btn.style.color = "black";
+
+            }
+
+            
+    });
+
+    //写一个方法，当选中任意房子规格选项时，直、侧飘台输入框清空值，且按钮恢复未确定状态、解除禁用
+        function selectoption_zhi_ce_input_btn() {
+           document.getElementById('zhipiaotai_iput').value = "";
+           document.getElementById('zhipiaotai_iput').disabled =false;
+           var zhipiaotai_btn = document.getElementById("zhipiaotai_btn");
+                zhipiaotai_btn.style.backgroundColor = "#e5e5e5";
+                zhipiaotai_btn.style.color = "black";
+                zhipiaotai_btn.disabled = false
+           document.getElementById('cepiaotai_iput').value = "";
+           document.getElementById('cepiaotai_iput').disabled = false
+           var cepiaotai_btn = document.getElementById("cepiaotai_btn");
+                cepiaotai_btn.style.backgroundColor = "#e5e5e5";
+                cepiaotai_btn.style.color = "black";
+                cepiaotai_btn.disabled = false
+           
+        }
+      </script>
+</body>
+</html>
